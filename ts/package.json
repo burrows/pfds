@@ -1,0 +1,15 @@
+{
+  "name": "pfds",
+  "version": "0.0.0",
+  "description": "TypeScript implementations of data structures from the book Purely Functional Data Structures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Corey Burrows",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "typescript": "^1.8.9"
+  }
+}
