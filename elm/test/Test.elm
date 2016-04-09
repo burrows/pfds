@@ -2,12 +2,12 @@ module Test where
 
 import ElmTest exposing (..)
 
-import Stack
+import StackTest
 
 tests : Test
 tests =
   suite "Purely Functional Data Structures"
-    [ Stack.tests ()
+    [ StackTest.tests
     ]
 
 main =
