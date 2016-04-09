@@ -1,4 +1,4 @@
-module Stack where
+module Stack (Stack, empty, singleton, isEmpty, cons, head, tail, length, tests) where
 
 import ElmTest exposing (..)
 
@@ -32,6 +32,15 @@ tail s =
     Cons _ tail -> Just tail
     _ -> Nothing
 
+length : Stack a -> Int
+length = length' 0
+
+length' : Int -> Stack a -> Int
+length' n s =
+  case s of
+    Cons _ tail -> length' (n + 1) tail
+    _ -> n
+
 ----------------------------------------------------------------------------------------------------
 -- Tests
 ----------------------------------------------------------------------------------------------------
@@ -58,4 +67,10 @@ tests _ =
         assertEqual (Just Empty) (tail (singleton 4))
     , test "tail returns all but the first item of a multi item stack" <|
         assertEqual (Just ((Cons 2 (Cons 3 Empty)))) (tail (Cons 1 (Cons 2 (Cons 3 Empty))))
+    , test "length returns 0 for an empty stack" <|
+        assertEqual 0 (length empty)
+    , test "length returns 1 for a singleton stack" <|
+        assertEqual 1 (length (singleton 3))
+    , test "length returns the length of the stack" <|
+        assertEqual 3 (length (cons 3 (cons 2 (cons 1 empty))))
     ]
