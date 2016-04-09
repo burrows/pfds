@@ -8,12 +8,10 @@ export class Cons<T> {
 
 export type Stack<T> = Empty | Cons<T>;
 
-export function empty<T>(): Stack<T> {
-  return new Empty;
-}
+export const empty = new Empty;
 
 export function singleton<T>(a: T): Stack<T> {
-  return new Cons(a, empty());
+  return new Cons(a, empty);
 }
 
 export function isEmpty<T>(stack: Stack<T>): boolean {
