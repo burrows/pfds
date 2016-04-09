@@ -1,9 +1,7 @@
-export class Empty {
-}
+class Empty {}
 
-export class Cons<T> {
-  constructor(public head: T, public tail: Stack<T>) {
-  }
+class Cons<T> {
+  constructor(public head: T, public tail: Stack<T>) {}
 }
 
 export type Stack<T> = Empty | Cons<T>;
@@ -15,7 +13,7 @@ export function singleton<T>(a: T): Stack<T> {
 }
 
 export function isEmpty<T>(stack: Stack<T>): boolean {
-  return stack instanceof Empty;
+  return stack === empty;
 }
 
 export function cons<T>(a: T, stack: Stack<T>): Stack<T> {
@@ -35,10 +33,5 @@ export function length<T>(stack: Stack<T>): number {
 }
 
 export function toArray<T>(stack: Stack<T>): T[] {
-  if (isEmpty(stack)) {
-    return [];
-  }
-  else {
-    return [head(stack)].concat(toArray(tail(stack)));
-  }
+  return isEmpty(stack) ? [] : [head(stack)].concat(toArray(tail(stack)))
 }

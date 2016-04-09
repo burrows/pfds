@@ -2,8 +2,6 @@
 
 import
   { Stack
-  , Empty
-  , Cons
   , empty
   , singleton
   , isEmpty
@@ -15,14 +13,8 @@ import
   } from "../Stack";
 
 export default describe('Stack', () => {
-  describe('empty', () => {
-    it('is an instance of the Empty constructor', () => {
-       expect(empty instanceof Empty).toBe(true);
-    });
-  });
-
   describe('isEmpty', () => {
-    it('returns true for an empty stack', () => {
+    it('returns true for the empty stack', () => {
       expect(isEmpty(empty)).toBe(true);
     });
 
