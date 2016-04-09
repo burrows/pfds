@@ -31,9 +31,17 @@ export function tail<T>(stack: Stack<T>): Stack<T> {
 }
 
 export function length<T>(stack: Stack<T>): number {
-  return isEmpty(stack) ? 0 : 1 + length(tail(stack));
+  return _length(stack, 0);
+}
+
+function _length<T>(stack: Stack<T>, l: number): number {
+  return isEmpty(stack) ? l : _length(tail(stack), l + 1);
 }
 
 export function toArray<T>(stack: Stack<T>): T[] {
-  return isEmpty(stack) ? [] : [head(stack)].concat(toArray(tail(stack)))
+  return _toArray(stack, []);
+}
+
+function _toArray<T>(stack: Stack<T>, array: T[]): T[] {
+  return isEmpty(stack) ? array : _toArray(tail(stack), array.concat(head(stack)));
 }
