@@ -10,14 +10,14 @@ default: spec
 
 dist/%.js: src/%.ts
 	@mkdir -p dist
-	./node_modules/.bin/tsc --outDir ./dist $<
+	./node_modules/.bin/tsc --noEmitOnError --outDir ./dist $<
 
 dist/spec/%.js: spec/%.ts
 	@mkdir -p dist/spec
-	./node_modules/.bin/tsc --outDir ./dist $<
+	./node_modules/.bin/tsc --noEmitOnError --outDir ./dist $<
 
 SPEC ?=
-spec: $(JS_SPECS)
+spec: $(JS_SPECS) $(JS_SOURCES)
 	./node_modules/.bin/jasmine $(SPEC)
 
 clean:
