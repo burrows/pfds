@@ -30,6 +30,10 @@ export function tail<T>(stack: Stack<T>): Stack<T> {
   return stack instanceof Cons ? stack.tail : null;
 }
 
+export function length<T>(stack: Stack<T>): number {
+  return isEmpty(stack) ? 0 : 1 + length(tail(stack));
+}
+
 export function toArray<T>(stack: Stack<T>): T[] {
   if (isEmpty(stack)) {
     return [];

@@ -1,6 +1,18 @@
 /// <reference path="../types/jasmine.d.ts" />
 
-import {Stack, Empty, Cons, empty, singleton, isEmpty, cons, head, tail, toArray} from "../Stack";
+import
+  { Stack
+  , Empty
+  , Cons
+  , empty
+  , singleton
+  , isEmpty
+  , cons
+  , head
+  , tail
+  , length
+  , toArray
+  } from "../Stack";
 
 export default describe('Stack', () => {
   describe('empty', () => {
@@ -64,6 +76,14 @@ export default describe('Stack', () => {
 
     it('returns an array containing all items of a multi-item stack', () => {
       expect(toArray(cons(1, cons(2, cons(3, empty))))).toEqual([1, 2, 3]);
+    });
+  });
+
+  describe('length', () => {
+    it('returns the length of the stack', () => {
+      expect(length(empty)).toBe(0);
+      expect(length(singleton(4))).toBe(1);
+      expect(length(cons(1, cons(2, cons(3, singleton(4)))))).toBe(4);
     });
   });
 });
