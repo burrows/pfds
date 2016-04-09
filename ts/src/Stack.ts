@@ -1,7 +1,9 @@
 class Empty {}
 
 class Cons<T> {
-  constructor(public head: T, public tail: Stack<T>) {}
+  constructor(public head: T, public tail: Stack<T>) {
+    Object.freeze(this);
+  }
 }
 
 export type Stack<T> = Empty | Cons<T>;
