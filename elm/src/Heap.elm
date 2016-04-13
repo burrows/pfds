@@ -1,4 +1,4 @@
-module Heap (Heap, empty, insert, findMin, deleteMin) where
+module Heap (Heap, empty, insert, findMin, deleteMin, fromList) where
 
 type Heap comparable = Empty | Node Int comparable (Heap comparable) (Heap comparable)
 
@@ -44,4 +44,8 @@ deleteMin h =
   case h of
     Empty -> h
     Node _ _ a b -> merge a b
+
+fromList : List comparable -> Heap comparable
+fromList =
+  List.foldl insert empty
 

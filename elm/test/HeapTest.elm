@@ -17,4 +17,8 @@ tests =
         assertEqual (Just 4) (deleteMin h1 |> findMin)
     , test "deleteMin deletes the minimum element 2" <|
         assertEqual (Just 12) (deleteMin h1 |> deleteMin |> deleteMin |> findMin)
+    , test "fromList creates a new Heap with the contents of the list 1" <|
+        assertEqual (Just 3) (fromList [12, 4, 7, 8, 3, 9, 6, 5] |> findMin)
+    , test "fromList creates a new Heap with the contents of the list 1" <|
+        assertEqual (Just 5) (fromList [12, 4, 7, 8, 3, 9, 6, 5] |> deleteMin |> deleteMin |> findMin)
     ]
